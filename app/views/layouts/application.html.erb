@@ -10,6 +10,59 @@
   </head>
 
   <body>
+
+    <!-- ヘッダー start -->
+    <header class="navbar navbar-inverse">
+      <div class="container">
+        <nav class="nav navbar-nav navbar-left">
+          <span>Bookers</span>
+        </nav>
+
+        <nav>
+          <ul class="nav navbar-nav navbar-right">
+          <% if user_signed_in? %>
+            <li>
+              <a class="glyphicon glyphicon-home home" href="/">Home</a>
+            </li>
+            <li>
+              <a class="glyphicon glyphicon-link about" href="#">about</a>
+            </li>
+            <li>
+              <a class="glyphicon glyphicon-edit sign_up" href="#">sign up</a>
+            </li>
+            <li>
+              <a class="glyphicon glyphicon-log-in sign_in" href="#">login</a>
+            </li>
+            <% else %>
+              <li>
+                <a class="glyphicon glyphicon-home home" href="/">Home</a>
+              </li>
+              <li>
+                <a class="glyphicon glyphicon-link about" href="#">about</a>
+              </li>
+              <li>
+                <a class="glyphicon glyphicon-edit sign_up" href="#">sign up</a>
+              </li>
+              <li>
+                <a class="glyphicon glyphicon-log-in sign_in" href="#">login</a>
+              </li>
+            <% end %>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <!-- ヘッダー end -->
+
     <%= yield %>
+
+    <!-- フッター start -->
+    <footer>
+      <div class="row">
+        <div class="col-xs-3 col-xs-offset-9">
+          <p>CopyRight Infratop. inc</p>
+        </div>
+      </div>
+    </footer>
+    <!-- フッター end -->
   </body>
 </html>
