@@ -22,7 +22,7 @@
           <ul class="nav navbar-nav navbar-right">
           <% if user_signed_in? %>
             <li>
-              <%= link_to ' Home', '#', {class: "glyphicon glyphicon-home home"} %>
+              <%= link_to ' Home', user_path(current_user.id), {class: "glyphicon glyphicon-home home"} %>
             </li>
             <li>
               <%= link_to ' Users', '#', {class: "glyphicon glyphicon-user users"} %>
@@ -31,7 +31,7 @@
               <%= link_to ' Books', '#', {class: "glyphicon glyphicon-book books"} %>
             </li>
             <li>
-              <%= link_to ' logout', '#', {class: "glyphicon glyphicon-log-out sign_out"} %>
+              <%= link_to ' logout', destroy_user_session_path, {method: :delete, class: "glyphicon glyphicon-log-out sign_out"} %>
             </li>
             
           <% else %>
