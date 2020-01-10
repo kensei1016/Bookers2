@@ -14,7 +14,11 @@
   </tbody>
 </table>
 <div class="row">
-  <%= link_to "", edit_user_path(user), class:"col-xs-12 btn btn-default btn-block glyphicon glyphicon-wrench" %>
+  <% if user.id == current_user.id %>
+    <%= link_to "", edit_user_path(user), class:"col-xs-12 btn btn-default btn-block glyphicon glyphicon-wrench" %>
+  <% else %>
+    <%= link_to "", user_path(current_user), class:"col-xs-12 btn btn-default btn-block glyphicon glyphicon-wrench" %>
+  <% end %>
 </div>
 <!-- UserInfo end -->
 <!-- NewBooks start -->
