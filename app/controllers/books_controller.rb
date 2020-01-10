@@ -6,7 +6,7 @@ class BooksController < ApplicationController
     @book = Book.new(book_params)
     @book.user_id = current_user.id
     if @book.save
-      redirect_to book_path(@book) # 投稿詳細画面
+      redirect_to book_path(@book)
     else
       render edit_user_path(current_user.id)
     end
@@ -19,6 +19,7 @@ class BooksController < ApplicationController
   end
 
   def show
+    @book_new = Book.new
     @book = Book.find(params[:id])
     @user = User.find(current_user.id)
   end
