@@ -16,6 +16,12 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+.clearfix:after {
+  box-sizing: content-box;
+  clear: both;
+  display: block;
+}
+
 body {
   padding-top: 50px;
 }

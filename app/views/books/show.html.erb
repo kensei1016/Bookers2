@@ -5,6 +5,7 @@
       <%= render 'users/profile', {user: @user, book: @book_new} %>
     </div>
     <div class="col-xs-9">
+      <%# Book detail %>
       <h2>Book detail</h2>
       <table class="table">
         <tbody>
@@ -29,6 +30,25 @@
           </tr>
         </tbody>
       </table>
+      <%# Book detail/ %>
+      <%# Comment %>
+      <div class="comment-count col-xs-12">
+        <p><%= @book.post_comments.count %>件コメント</p>
+      </div>
+      <% @post_comments.each do |post_comment| %>
+        <div class="comment-display col-xs-12">
+          <div class="comment-box">
+            <div class="comment-profile-box">
+              <%= attachment_image_tag post_comment.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
+              <span><%= post_comment.user.name %></span>
+            </div>
+            <div class="comment-text">
+              <%= post_comment.comment %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <%# Comment/ %>
     </div>
   </div>
 </div>
