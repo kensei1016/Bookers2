@@ -70,7 +70,7 @@
               <div class="comment-text"><%= post_comment.comment %></div>
               <div class="comment-compilation-links">
                 <%= link_to '編集', '#', class: "comment-edit-link" %>
-                <%= link_to '削除', '#', method: :delete , class: "comment-delete-link"%>
+                <%= link_to '削除', book_post_comment_path(@book, post_comment), method: :delete , class: "comment-delete-link"%>
               </div>
             </div>
           </div>
