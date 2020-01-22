@@ -32,18 +32,35 @@
       </table>
       <%# Book detail/ %>
       <%# Comment %>
+      <h3>Comment</h3>
+      <div class="comment-input-block">
+        <%= form_for [@book, @post_comment] do |f| %>
+          <div class="form-group">
+            <%= f.text_area :comment, rows: '5', class: "form-control", placeholder: "あなたの思いを徒然なるままに…"%>
+          </div>
+          <%= f.submit "Post Yout Comment", class: "btn btn-success pull-right"%>
+        <% end %>
+      </div>
+
       <div class="comment-count col-xs-12">
-        <p><%= @book.post_comments.count %>件コメント</p>
+        <p>コメント<%= @book.post_comments.count %>件</p>
       </div>
       <% @post_comments.each do |post_comment| %>
-        <div class="comment-display col-xs-12">
-          <div class="comment-box">
-            <div class="comment-profile-box">
-              <%= attachment_image_tag post_comment.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
-              <span><%= post_comment.user.name %></span>
+        <div class="comment-block col-xs-12">
+          <div class="comment-box clearfix">
+            <div class="comment-box-content-left col-xs-2">
+              <div class="commenter-box">
+                <%= attachment_image_tag post_comment.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
+                <span class="commenter-name"><%= post_comment.user.name %></span>
+              </div>
             </div>
-            <div class="comment-text">
-              <%= post_comment.comment %>
+            <div class="comment-box-content-right col-xs-10">
+              <div class="comment-date"><%= post_comment.created_at.strftime('%Y/%m/%d %H:%M') %></div>
+              <div class="comment-text"><%= post_comment.comment %></div>
+              <div class="comment-compilation-links">
+                <%= link_to '編集', '#', class: "comment-edit-link" %>
+                <%= link_to '削除', '#', method: :delete , class: "comment-delete-link"%>
+              </div>
             </div>
           </div>
         </div>

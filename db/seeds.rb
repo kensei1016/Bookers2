@@ -6,15 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# ！seed検証用！
-# User.destroy_all
-# Book.destroy_all
-# PostComment.destroy_all
-# ！seed検証用！
-
 User.find_or_create_by!(email: "onigiri@example.com") do |user|
   user.name = "onigiri"
-  user.introduction = '趣味はスノーボードです。\n週イチで長野行ってます'
+  user.introduction = '趣味はスノーボードです。週イチで長野行ってます'
   user.password = 'password'
 end
 
@@ -30,18 +24,18 @@ user_johnson = User.find_by(email: "johnson@example.com")
 5.times do |num|
   book = Book.create!(
     title: "Book#{num+1}",
-    body: "サンプルサンプルサンプル",
+    body: "サンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプルサンプル",
     user_id: user_onigiri.id
   )
   
   PostComment.create!(
-    comment: "コメントコメントコメント",
+    comment: "コメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメント",
     user_id: user_onigiri.id,
     book_id: book.id
   )
 
   PostComment.create!(
-    comment: "コメントコメントコメント",
+    comment: "コメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメント",
     user_id: user_johnson.id,
     book_id: book.id
   )
