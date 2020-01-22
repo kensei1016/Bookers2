@@ -68,10 +68,12 @@
             <div class="comment-box-content-right col-xs-10">
               <div class="comment-date"><%= post_comment.created_at.strftime('%Y/%m/%d %H:%M') %></div>
               <div class="comment-text"><%= post_comment.comment %></div>
+              <% if post_comment.user.id == current_user.id%>
               <div class="comment-compilation-links">
                 <%= link_to '編集', '#', class: "comment-edit-link" %>
                 <%= link_to '削除', book_post_comment_path(@book, post_comment), method: :delete , class: "comment-delete-link"%>
               </div>
+              <% end %>
             </div>
           </div>
         </div>
