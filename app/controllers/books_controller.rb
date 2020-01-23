@@ -24,6 +24,8 @@ class BooksController < ApplicationController
     @book_new = Book.new
     @book = Book.find(params[:id])
     @user = User.find(current_user.id)
+    @post_comment = PostComment.new
+    @post_comments = @book.post_comments.order(created_at: :desc)
   end
 
   def edit

@@ -1,0 +1,58 @@
+// Place all the styles related to the PostComments controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* comment input */
+// .comment-label {
+//   font-size: 20px;
+// }
+/* comment input/ */
+
+.comment-count:after {
+  display: block;
+  background-color: #DADADA;
+  margin-bottom: 20px;
+  width: 100%;
+  height: 1px;
+  content: "";
+}
+
+/* comment display */
+.comment-block {
+  margin-bottom: 10px;
+}
+
+.comment-block:last-child {
+  margin-bottom: 0;
+}
+
+.comment-box {
+  border: 1px solid #E2E2E2;
+  border-radius: 42px;
+  padding: 10px;
+  .comment-box-content-left .comment-box-content-right {
+    float: left;
+  }
+}
+
+.commenter-box {
+  text-align: center;
+}
+
+.commenter-box img {
+  border-radius: 100%;
+  display: inline-block;
+}
+
+.commenter-name {
+  display: block;
+}
+
+.comment-edit-link {
+  margin-right: 5px;
+}
+
+.comment-edit-block {
+  display: none;
+}
+/* comment display/ */

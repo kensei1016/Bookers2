@@ -1,4 +1,4 @@
-<!-- UserInfo start -->
+<%# UserInfo %>
 <h2>User info</h2>
 <%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
 <table class="table">
@@ -20,8 +20,8 @@
     <%= link_to "", user_path(current_user), class:"col-xs-12 btn btn-default btn-block glyphicon glyphicon-wrench" %>
   <% end %>
 </div>
-<!-- UserInfo end -->
-<!-- NewBooks start -->
+<%# UserInfo/ %>
+<%# NewBooks %>
 <h2>New book</h2>
 <div class="row">
 <%= form_for(book) do |f| %>
@@ -36,4 +36,4 @@
   <%= f.submit "Create Book", class:"btn btn-primary form-control" %>
 <% end %>
 </div>
-<!-- NewBooks end -->
+<%# NewBooks/ %>

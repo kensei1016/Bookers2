@@ -11,7 +11,7 @@
 
   <body>
 
-    <!-- ヘッダー start -->
+    <%# header %>
     <header class="navbar navbar-fixed-top navbar-inverse">
       <div class="container">
         <nav class="navbar-header navbar-left">
@@ -52,11 +52,11 @@
         </nav>
       </div>
     </header>
-    <!-- ヘッダー end -->
+    <%# header/ %>
 
     <%= yield %>
 
-    <!-- フッター start -->
+    <%# footer %>
     <footer>
       <div class="row">
         <div class="col-xs-3 col-xs-offset-9">
@@ -64,6 +64,6 @@
         </div>
       </div>
     </footer>
-    <!-- フッター end -->
+    <%# footer/ %>
   </body>
 </html>
