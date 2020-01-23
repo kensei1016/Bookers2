@@ -69,7 +69,9 @@
               <div class="comment-date"><%= post_comment.created_at.strftime('%Y/%m/%d %H:%M') %></div>
 
               <div class="comment-display-block">
-                <div class="comment-text"><%= post_comment.comment %></div>
+                <div id="comment-text-<%= post_comment.id %>">
+                  <%= simple_format(h(post_comment.comment), {}, sanitize: false, wrapper_tag: "div") %>
+                </div>
                 <% if post_comment.user.id == current_user.id %>
                 <div class="comment-compilation-links">
                   <%= link_to '編集', edit_book_post_comment_path(@book, post_comment), remote: true, class: "comment-edit-link" %>
@@ -80,7 +82,7 @@
 
               <% if post_comment.user.id == current_user.id %>
               <div class="comment-edit-block">
-                <%= form_with model: [@book, post_comment] do |f| %>
+                <%= form_with model: [@book, post_comment], class: "comment-edit-form" do |f| %>
                   <%= f.text_area :comment, class: "form-control" %>
                   <%= f.submit '更新', class: "comment-update-btn" %>
                 <% end %>

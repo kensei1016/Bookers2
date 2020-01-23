@@ -20,9 +20,19 @@ class PostCommentsController < ApplicationController
   end
 
   def update
-    post_comment = PostComment.find(params[:id])
-    post_comment.update!(comment_params)
-    head :no_content
+    @post_comment = PostComment.find(params[:id])
+    @post_comment.update!(comment_params)
+
+    # head :no_content
+
+    # @book_new = Book.new
+    # @user = User.find(current_user.id)
+    # @book = Book.find(params[:book_id])
+    # @post_comments = @book.post_comments
+
+    # render "books/show"
+
+    # redirect_to book_path(params[:book_id]), notice: "コメントを更新しました"
   end
 
   def destroy
