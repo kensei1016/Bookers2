@@ -12,8 +12,26 @@
   <% end %>
   <div class="row">
     <div class="col-xs-3">
+      <%# userprofile %>
       <%= render 'users/profile', {user: @user, book: @book} %>
+      <%# userprofile/ %>
     </div>
-    <%= render 'books/books_table', books: @books %>
+    <div class="col-xs-9">
+      <h2>Books</h2>
+      <div class="search-form-wrapper">
+        <%= search_form_for @q, class: "form-inline" do |f| %>
+          <div class="form-group">
+            <%= f.label :title_cont, 'Title', class: 'sr-only' %>
+            <%= f.search_field :title_cont, class: 'form-control', placeholder: 'Title' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :body_cont, 'Opinion', class: 'sr-only' %>
+            <%= f.search_field :body_cont, class: 'form-control', placeholder: 'Opinion' %>
+          </div>
+          <%= f.submit class: "btn btn-default" %>
+        <% end %>
+      </div>
+      <%= render 'books/books_table', books: @books %>
+    </div>
   </div>
 </div>

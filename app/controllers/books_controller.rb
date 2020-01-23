@@ -16,10 +16,8 @@ class BooksController < ApplicationController
 
   def index
     @book = Book.new
-    # @books = Book.all
     @q = Book.all.ransack(params[:q])
     @q.sorts = 'created_at desc' if @q.sorts.empty?
-    # @books = @q.result.paginate(page: params[:page], per_page: 20)
     @books = @q.result
 
     @user = User.find(current_user.id)

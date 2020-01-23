@@ -4,6 +4,9 @@
     <div class="col-xs-3">
       <%= render 'users/profile', {user: @user, book: @book} %>
     </div>
-    <%= render 'books/books_table', books: @books %>
+    <div class="col-xs-9">
+      <h2>Books</h2>
+      <%= render 'books/books_table', books: @books %>
+    </div>
   </div>
 </div>
