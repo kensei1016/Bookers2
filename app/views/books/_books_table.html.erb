@@ -4,9 +4,9 @@
     <thead>
       <tr>
         <th id="book-table-th-avatar"></th>
-        <th id="book-table-th-title">Title</th>
-        <th id="book-table-th-opinion">Opinion</th>
-        <th id="book-table-th-when">When</th>
+        <th id="book-table-th-title"><%= sort_link(@q, :title) %></th>
+        <th id="book-table-th-opinion"><%= sort_link(@q, :body, 'Opinion') %></th>
+        <th id="book-table-th-when"><%= sort_link(@q, :created_at, 'When', default_order: :desc) %></th>
       </tr>
     </thead>
     <tbody>
