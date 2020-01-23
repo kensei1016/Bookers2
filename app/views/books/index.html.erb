@@ -22,12 +22,8 @@
       <div class="search-form-wrapper">
         <%= search_form_for @q, class: "form-inline" do |f| %>
           <div class="form-group">
-            <%= f.label :title_cont, 'Title', class: 'sr-only' %>
-            <%= f.search_field :title_cont, class: 'form-control', placeholder: 'Title' %>
-          </div>
-          <div class="form-group">
-            <%= f.label :body_cont, 'Opinion', class: 'sr-only' %>
-            <%= f.search_field :body_cont, class: 'form-control', placeholder: 'Opinion' %>
+            <%= f.label :title_or_body_cont, 'Title', class: 'control-label sr-only' %>
+            <%= f.search_field :title_or_body_cont,  autofocus: true, placeholder: "\uf002 Title or Opinion...", class: 'form-control fa' %>
           </div>
           <%= f.submit class: "btn btn-primary" %>
         <% end %>
