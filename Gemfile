@@ -76,3 +76,6 @@ gem "refile-mini_magick"
 
 # デバック
 gem 'pry-byebug'
+
+# 検索・ソート機能
+gem 'ransack'
