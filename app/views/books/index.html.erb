@@ -11,9 +11,25 @@
     </div>
   <% end %>
   <div class="row">
+    <%# userprofile %>
     <div class="col-xs-3">
       <%= render 'users/profile', {user: @user, book: @book} %>
     </div>
-    <%= render 'books/books_table', books: @books %>
+    <%# userprofile/ %>
+    <%# Books %>
+    <div class="col-xs-9">
+      <h2>Books</h2>
+      <div class="search-form-wrapper">
+        <%= search_form_for @q, class: "form-inline" do |f| %>
+          <div class="form-group">
+            <%= f.label :title_or_body_cont, 'Title', class: 'control-label sr-only' %>
+            <%= f.search_field :title_or_body_cont,  autofocus: true, placeholder: "\uf002 Title or Opinion...", class: 'form-control fa' %>
+          </div>
+          <%= f.submit class: "btn btn-primary" %>
+        <% end %>
+      </div>
+      <%= render 'books/books_table', books: @books %>
+    </div>
+    <%# Books/ %>
   </div>
 </div>

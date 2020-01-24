@@ -7,7 +7,9 @@ class UsersController < ApplicationController
 
   def show
     @book = Book.new
-    @books = Book.where(user_id: params[:id])
+    @q = Book.where(user_id: params[:id]).ransack(params[:q])
+    @q.sorts = 'created_at desc' if @q.sorts.empty?
+    @books = @q.result
     @user = User.find(params[:id])
   end
 

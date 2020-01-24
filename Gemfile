@@ -79,3 +79,6 @@ gem 'pry-byebug'
 
 # 検索・ソート機能
 gem 'ransack'
+
+# アイコン
+gem 'font-awesome-sass', '~> 5.4.1'
