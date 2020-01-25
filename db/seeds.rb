@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+# User
 User.find_or_create_by!(email: "onigiri@example.com") do |user|
   user.name = "onigiri"
   user.introduction = '趣味はスノーボードです。週イチで長野行ってます'
@@ -17,6 +18,7 @@ User.find_or_create_by!(email: "johnson@example.com") do |user|
   user.introduction = '最近ペットの小太郎（イヌ）が僕の手を噛んできます'
   user.password = 'password'
 end
+# User/
 
 user_onigiri = User.find_by(email: "onigiri@example.com")
 user_johnson = User.find_by(email: "johnson@example.com")
@@ -42,6 +44,7 @@ comments = [
   'I can jump from high places'
 ]
 
+# Book & Comment
 5.times do |num|
   book = Book.create!(
     title: "Book-#{user_onigiri.name}-#{num+1}",
@@ -81,3 +84,18 @@ end
     book_id: book.id
   )
 end
+# Book & Comment/
+
+# Emotion
+5.times do |num|
+  book = Book.order("RANDOM()").first
+  user = User.order("RANDOM()").first
+  Emotion.create!(
+    book_id: book.id,
+    user_id: user.id,
+    happy: rand(2)== 1 ? true : false,
+    cry: rand(2)== 1 ? true : false,
+    suprise: rand(2)== 1 ? true : false,
+  )
+end
+# Emotion/
