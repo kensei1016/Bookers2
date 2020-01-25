@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_25_035622) do
+ActiveRecord::Schema.define(version: 2020_01_25_064639) do
 
   create_table "books", force: :cascade do |t|
     t.string "title"
@@ -18,12 +18,13 @@ ActiveRecord::Schema.define(version: 2020_01_25_035622) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "book_image_id"
   end
 
   create_table "emotions", force: :cascade do |t|
     t.boolean "happy", default: false
     t.boolean "cry", default: false
-    t.boolean "suprise", default: false
+    t.boolean "surprise", default: false
     t.integer "user_id"
     t.integer "book_id"
     t.datetime "created_at", null: false

@@ -95,7 +95,7 @@ end
     user_id: user.id,
     happy: rand(2)== 1 ? true : false,
     cry: rand(2)== 1 ? true : false,
-    suprise: rand(2)== 1 ? true : false,
+    surprise: rand(2)== 1 ? true : false,
   )
 end
 # Emotion/
