@@ -33,6 +33,10 @@
     <%= f.label "Opinion"%>
     <%= f.text_area :body, class:"form-control" %>
   </div>
+  <div class="form-group">
+    <%= f.label "Book Image" %>
+    <%= f.attachment_field :book_image %>
+  </div>
   <%= f.submit "Create Book", class:"btn btn-primary form-control" %>
 <% end %>
 </div>
