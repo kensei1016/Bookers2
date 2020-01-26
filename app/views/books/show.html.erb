@@ -1,14 +1,14 @@
 <div class="container">
   <p id="notice"><%= notice %></p>
   <div class="row">
-    <div class="col-xs-3">
+    <div class="col-3">
       <%= render 'users/profile', {user: @user, book: @book_new} %>
     </div>
-    <div class="col-xs-9">
+    <div class="col-9">
       <%# Book detail %>
       <h2>Book detail</h2>
-      <div class="booker-profile row">
-        <div class="booker-profile-wrapper pull-right">
+      <div class="booker-profile row justify-content-end">
+        <div class="booker-profile-wrapper">
           <%= link_to user_path(@book.user_id) do%>
             <%= @book.user.name %>
             <%= attachment_image_tag @book.user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg" %>
@@ -16,10 +16,10 @@
         </div>
       </div>
       <div class="book-detail-block row">
-        <div class="book-detail-left-content col-xs-3">
+        <div class="book-detail-left-content col-3">
           <%= attachment_image_tag @book, :book_image, :fill, 190, 252.15, fallback: "no-image-book.png" %>
         </div>
-        <div class="book-detail-right-content col-xs-9">
+        <div class="book-detail-right-content col-9">
           <h3 class="book-title"><%= @book.title %></h3>
           <p class="book-opinion"><%= simple_format(h(@book.body), {}, sanitize: false, wrapper_tag: "div") %></p>
           <div class="post-edit-links">
@@ -29,7 +29,7 @@
             <% end %>
           </div>
           <div class="post-emotion-block row">
-            <div class="post-emotion post-emotion-happy col-xs-1">
+            <div class="post-emotion post-emotion-happy col-1">
               <span><%= @book.emotion_count(:happy) %></span><br>
               <% if @book.emotion_by?(current_user, :happy) %>
                 <%= link_to book_emotion_path(@book, emotion_type: :happy), method: :delete do %>
@@ -41,7 +41,7 @@
                 <% end %>
               <% end %>
             </div>
-            <div class="post-emotion post-emotion-cry col-xs-1">
+            <div class="post-emotion post-emotion-cry col-1">
               <span><%= @book.emotion_count(:cry) %></span><br>
               <% if @book.emotion_by?(current_user, :cry) %>
                 <%= link_to book_emotion_path(@book, emotion_type: :cry), method: :delete do %>
@@ -53,7 +53,7 @@
                 <% end %>
               <% end %>
             </div>
-            <div class="post-emotion post-emotion-surprise col-xs-1">
+            <div class="post-emotion post-emotion-surprise col-1">
               <span><%= @book.emotion_count(:surprise) %></span><br>
               <% if @book.emotion_by?(current_user, :surprise) %>
                 <%= link_to book_emotion_path(@book, emotion_type: :surprise), method: :delete do %>
@@ -82,20 +82,22 @@
               </ul>
             </div>
           <% end %>
-          <div class="form-group">
+          <div class="form-group form-row">
             <%= f.text_area :comment, rows: '5', class: "form-control", placeholder: "あなたの思いを徒然なるままに…"%>
           </div>
-          <%= f.submit "Post Yout Comment", class: "btn btn-success pull-right"%>
+          <div class="form-group form-row justify-content-end">
+            <%= f.submit "Post Yout Comment", class: "btn btn-success"%>
+          </div>
         <% end %>
       </div>
 
-      <div class="comment-count col-xs-12">
+      <div class="comment-count col-12">
         <p>コメント<%= @book.post_comments.count %>件</p>
       </div>
       <% @post_comments.each do |post_comment| %>
-        <div class="comment-block col-xs-12">
-          <div class="comment-box clearfix">
-            <div class="comment-box-content-left col-xs-2">
+        <div class="comment-block col-12">
+          <div class="comment-box row no-gutters">
+            <div class="comment-box-content-left col-2">
               <div class="commenter-box">
                 <%= link_to user_path(post_comment.user) do %>
                   <%= attachment_image_tag post_comment.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
@@ -103,7 +105,7 @@
                 <% end %>
               </div>
             </div>
-            <div class="comment-box-content-right col-xs-10">
+            <div class="comment-box-content-right col-10">
               <div class="comment-date"><%= post_comment.created_at.strftime('%Y/%m/%d %H:%M') %></div>
 
               <div class="comment-display-block">
