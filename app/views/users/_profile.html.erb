@@ -33,10 +33,17 @@
     <%= f.label "Opinion"%>
     <%= f.text_area :body, class:"form-control" %>
   </div>
-  <div class="form-group">
+  <!--<div class="form-group">
     <%= f.label "Book Image" %>
     <%= f.attachment_field :book_image %>
+  </div>-->
+
+  <%= f.attachment_field :book_image, id: "lefile", style: "display: none;" %>
+  <div class="form-group form-inline">
+    <input type="text", id="photoCover", class="form-control", placeholder="select file...">
+    <span class="btn btn-default", onclick="$('input[id=lefile]').click();">Choose</span>
   </div>
+
   <%= f.submit "Create Book", class:"btn btn-primary form-control" %>
 <% end %>
 </div>
