@@ -12,12 +12,12 @@
   <% end %>
   <div class="row">
     <%# userprofile %>
-    <div class="col-xs-3">
+    <div class="col-3">
       <%= render 'users/profile', {user: @user, book: @book} %>
     </div>
     <%# userprofile/ %>
     <%# Books %>
-    <div class="col-xs-9">
+    <div class="col-9">
       <h2>Books</h2>
       <div class="search-form-wrapper">
         <%= search_form_for @q, class: "form-inline" do |f| %>

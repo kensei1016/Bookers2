@@ -3,6 +3,7 @@ class BooksController < ApplicationController
   end
 
   def create
+    binding.pry
     @user = User.find(current_user.id)
     @books = Book.all
     @book = Book.new(book_params)
@@ -56,6 +57,6 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:title, :body)
+    params.require(:book).permit(:title, :body, book_images_book_images: [])
   end
 end

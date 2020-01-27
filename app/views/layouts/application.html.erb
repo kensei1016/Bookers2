@@ -12,45 +12,68 @@
   <body>
 
     <%# header %>
-    <header class="navbar navbar-fixed-top navbar-inverse">
-      <div class="container">
-        <nav class="navbar-header navbar-left">
-          <span>Bookers</span>
-        </nav>
+    <header class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
+      <% if user_signed_in? %>
+        <%= link_to 'Bookers', user_path(current_user.id), class: "navbar-brand" %>
+      <% else %>
+        <%= link_to 'Bookers', root_path, class: "navbar-brand" %>
+      <% end %>
 
-        <nav class="collapse navbar-collapse">
-          <ul class="nav navbar-nav navbar-right">
-          <% if user_signed_in? %>
-            <li>
-              <%= link_to ' Home', user_path(current_user.id), {class: "glyphicon glyphicon-home home"} %>
-            </li>
-            <li>
-              <%= link_to ' Users', users_path, {class: "glyphicon glyphicon-user users"} %>
-            </li>
-            <li>
-              <%= link_to ' Books', books_path, {class: "glyphicon glyphicon-book books"} %>
-            </li>
-            <li>
-              <%= link_to ' logout', destroy_user_session_path, {method: :delete, class: "glyphicon glyphicon-log-out sign_out"} %>
-            </li>
-            
-          <% else %>
-            <li>
-              <%= link_to ' Home', root_path, {class: "glyphicon glyphicon-home home"} %>
-            </li>
-            <li>
-              <%= link_to ' About', home_about_path, {class: "glyphicon glyphicon-link about"} %>
-            </li>
-            <li>
-              <%= link_to ' Sign up', new_user_registration_path, {class: "glyphicon glyphicon-edit sign_up"} %>
-            </li>
-            <li>
-              <%= link_to ' login', new_user_session_path, {class: "glyphicon glyphicon-log-in sign_in"} %>
-            </li>
-          <% end %>
-          </ul>
-        </nav>
-      </div>
+      <nav class="collapse navbar-collapse">
+        <ul class="nav navbar-nav ml-auto">
+        <% if user_signed_in? %>
+          <li>
+            <%= link_to user_path(current_user.id), class: "nav-link" do %>
+              <%= icon 'fas', 'home' %>
+              <span> Home</span>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to users_path, class: "nav-link" do %>
+              <%= icon 'fas', 'user' %>
+              <span> Users</span>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to books_path, class: "nav-link" do %>
+              <%= icon 'fas', 'book' %>
+              <span> Books</span>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to destroy_user_session_path, method: :delete, class: "nav-link" do %>
+              <%= icon 'fas', 'sign-out-alt' %>
+              <span> logout</span>
+            <% end %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to root_path, class: "nav-link" do %>
+              <%= icon 'fas', 'home' %>
+              <span> Home</span>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to home_about_path, class: "nav-link" do %>
+              <%= icon 'fas', 'address-card' %>
+              <span> About</span>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_user_registration_path, class: "nav-link" do %>
+              <%= icon 'fas', 'user-plus' %>
+              <span> Sign up</span>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_user_session_path, class: "nav-link" do %>
+              <%= icon 'fas', 'sign-in-alt' %>
+              <span> Sign in</span>
+            <% end %>
+          </li>
+        <% end %>
+        </ul>
+      </nav>
     </header>
     <%# header/ %>
 
@@ -58,8 +81,8 @@
 
     <%# footer %>
     <footer>
-      <div class="row">
-        <div class="col-xs-3 col-xs-offset-9">
+      <div class="row justify-content-end">
+        <div class="col-sm-3">
           <p>CopyRight Infratop. inc</p>
         </div>
       </div>

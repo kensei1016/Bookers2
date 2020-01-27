@@ -1,6 +1,18 @@
 // Place all the styles related to the Books controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* New book */
+.custom-file {
+  // max-width: 20rem;
+  width: 100%;
+  overflow: hidden;
+}
+.custom-file-label {
+  white-space: nowrap;
+}
+/* New book/ */
+
 /* Books */
 .search-form-wrapper {
   margin: 20px 0;
@@ -22,3 +34,33 @@
   width: 30%;
 }
 /* Books/ */
+
+/* Book detail */
+.booker-profile {
+  margin-bottom: 15px;
+}
+
+.book-detail-block {
+  background-color: #F5F5F5;
+  padding: 10px;
+}
+
+.booker-profile img {
+  border-radius: 50%;
+}
+
+.post-edit-links {
+  margin-bottom: 10px;
+}
+
+.post-emotion {
+  text-align: center;
+  a {
+    color: gray;
+  }
+}
+
+.post-emotion i {
+  font-size: 25px;
+}
+/* Book detail/ */

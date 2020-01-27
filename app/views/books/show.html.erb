@@ -1,35 +1,87 @@
 <div class="container">
   <p id="notice"><%= notice %></p>
   <div class="row">
-    <div class="col-xs-3">
+    <div class="col-3">
       <%= render 'users/profile', {user: @user, book: @book_new} %>
     </div>
-    <div class="col-xs-9">
+    <div class="col-9">
       <%# Book detail %>
       <h2>Book detail</h2>
-      <table class="table">
-        <tbody>
-          <tr> 
-            <td>
-              <%= link_to user_path(@book.user_id) do%>
-                <%= attachment_image_tag @book.user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg" %>
-                <br>
-                <%= @book.user.name %>
-              <% end %>
-            </td>
-            <td><%= @book.title %></td>
-            <td><%= @book.body %></td>
-            <% if @book.user_id == current_user.id %>
-            <td>
-              <%= link_to 'Edit', edit_book_path(@book), {class:"btn btn-success"} %>
-            </td>
-            <td>
-              <%= link_to 'Destroy', book_path(@book), {data: {confirm: "本当に消しますか？"}, method: :delete, class:"btn btn-danger"} %>
-            </td>
+      <div class="booker-profile row justify-content-end">
+        <div class="booker-profile-wrapper">
+          <%= link_to user_path(@book.user_id) do%>
+            <%= @book.user.name %>
+            <% if @book.user.profile_image.present? %>
+              <%= attachment_image_tag book.user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg" %>
+            <% else %>
+              <%= image_tag "no_image.jpg", size: "40x40" %>
             <% end %>
-          </tr>
-        </tbody>
-      </table>
+          <% end %>
+        </div>
+      </div>
+      <div class="book-detail-block row">
+        <div class="book-detail-left-content col-3">
+          <div id="container" style="height: 252px;">
+              <% if @book.book_images.present? %>
+                <div id="theTarget">
+                  <% @book.book_images.each do |book_image| %>
+                    <%= attachment_image_tag book_image, :book_image, :fill, 190, 252.15, fallback: "no-image-book.png" %>
+                  <% end %>
+                </div>
+              <% else %>
+                <%= image_tag "no-image-book.png", size: "190x252.15" %>
+              <% end %>
+          </div>
+        </div>
+        <div class="book-detail-right-content col-9">
+          <h3 class="book-title"><%= @book.title %></h3>
+          <p class="book-opinion"><%= simple_format(h(@book.body), {}, sanitize: false, wrapper_tag: "div") %></p>
+          <div class="post-edit-links">
+            <% if @book.user.id == current_user.id %>
+            <%= link_to '編集', edit_book_path(@book) %>
+            <%= link_to '削除', book_path(@book), method: :delete %>
+            <% end %>
+          </div>
+          <div class="post-emotion-block row">
+            <div class="post-emotion post-emotion-happy col-1">
+              <span><%= @book.emotion_count(:happy) %></span><br>
+              <% if @book.emotion_by?(current_user, :happy) %>
+                <%= link_to book_emotion_path(@book, emotion_type: :happy), method: :delete do %>
+                  <%= icon 'far', 'grin-hearts', style: "color: red;" %>
+                <% end %>
+              <% else %>
+                <%= link_to book_emotions_path(@book, emotion_type: :happy), method: :post do %>
+                  <%= icon 'far', 'grin-hearts' %>
+                <% end %>
+              <% end %>
+            </div>
+            <div class="post-emotion post-emotion-cry col-1">
+              <span><%= @book.emotion_count(:cry) %></span><br>
+              <% if @book.emotion_by?(current_user, :cry) %>
+                <%= link_to book_emotion_path(@book, emotion_type: :cry), method: :delete do %>
+                  <%= icon 'far', 'sad-cry', style: "color: blue;" %>
+                <% end %>
+              <% else %>
+                <%= link_to book_emotions_path(@book, emotion_type: :cry), method: :post do %>
+                  <%= icon 'far', 'sad-cry' %>
+                <% end %>
+              <% end %>
+            </div>
+            <div class="post-emotion post-emotion-surprise col-1">
+              <span><%= @book.emotion_count(:surprise) %></span><br>
+              <% if @book.emotion_by?(current_user, :surprise) %>
+                <%= link_to book_emotion_path(@book, emotion_type: :surprise), method: :delete do %>
+                  <%= icon 'far', 'surprise', style: "color: green;" %>
+                <% end %>
+              <% else %>
+                <%= link_to book_emotions_path(@book, emotion_type: :surprise), method: :post do %>
+                  <%= icon 'far', 'surprise' %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
       <%# Book detail/ %>
       <%# Comment %>
       <h3>Comment</h3>
@@ -44,20 +96,22 @@
               </ul>
             </div>
           <% end %>
-          <div class="form-group">
+          <div class="form-group form-row">
             <%= f.text_area :comment, rows: '5', class: "form-control", placeholder: "あなたの思いを徒然なるままに…"%>
           </div>
-          <%= f.submit "Post Yout Comment", class: "btn btn-success pull-right"%>
+          <div class="form-group form-row justify-content-end">
+            <%= f.submit "Post Yout Comment", class: "btn btn-success"%>
+          </div>
         <% end %>
       </div>
 
-      <div class="comment-count col-xs-12">
+      <div class="comment-count col-12">
         <p>コメント<%= @book.post_comments.count %>件</p>
       </div>
       <% @post_comments.each do |post_comment| %>
-        <div class="comment-block col-xs-12">
-          <div class="comment-box clearfix">
-            <div class="comment-box-content-left col-xs-2">
+        <div class="comment-block col-12">
+          <div class="comment-box row no-gutters">
+            <div class="comment-box-content-left col-2">
               <div class="commenter-box">
                 <%= link_to user_path(post_comment.user) do %>
                   <%= attachment_image_tag post_comment.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
@@ -65,7 +119,7 @@
                 <% end %>
               </div>
             </div>
-            <div class="comment-box-content-right col-xs-10">
+            <div class="comment-box-content-right col-10">
               <div class="comment-date"><%= post_comment.created_at.strftime('%Y/%m/%d %H:%M') %></div>
 
               <div class="comment-display-block">

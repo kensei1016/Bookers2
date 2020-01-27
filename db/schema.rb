@@ -10,12 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_21_085942) do
+ActiveRecord::Schema.define(version: 2020_01_27_053629) do
+
+  create_table "book_images", force: :cascade do |t|
+    t.integer "book_id"
+    t.string "book_image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "books", force: :cascade do |t|
     t.string "title"
     t.text "body"
     t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "emotions", force: :cascade do |t|
+    t.boolean "happy", default: false
+    t.boolean "cry", default: false
+    t.boolean "surprise", default: false
+    t.integer "user_id"
+    t.integer "book_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
