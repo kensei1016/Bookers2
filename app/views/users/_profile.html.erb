@@ -38,17 +38,18 @@
       <%= f.text_area :body, class:"form-control" %>
     </div>
 
-    <div class="form-group">
-      <label for="file">ファイル（複数選択可）</label>
+    <div class="form-group form-row">
+      <!--<label for="file">ファイル（複数選択可）</label>-->
       <div id="file" class="input-group">
         <div class="custom-file">
           <!--<input type="file" id="cutomfile" class="custom-file-input" name="cutomfile[]" multiple />-->
           <!--<%= f.file_field :book_image, id: "cutomfile", class: "custom-file-input", :multiple => true %>-->
-          <%= f.attachment_field :book_images_book_images, class: "custom-file-input", :multiple => true %>
-          <label class="custom-file-label" for="customfile" data-browse="参照">ファイル選択...</label>
+          <%= f.attachment_field :book_images_book_images, id: "customfile", class: "custom-file-input", :multiple => true %>
+          <label class="custom-file-label" for="customfile" data-browse="参照">Book Image...</label>
         </div>
         <div class="input-group-append">
-          <button type="button" class="btn btn-outline-secondary reset">取消</button>
+          <%= link_to '取消', "", class: "reset" %>
+          <!--<button type="button" class="btn btn-outline-secondary reset">取消</button>-->
         </div>
       </div>
     </div>

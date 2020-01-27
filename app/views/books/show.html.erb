@@ -11,22 +11,26 @@
         <div class="booker-profile-wrapper">
           <%= link_to user_path(@book.user_id) do%>
             <%= @book.user.name %>
-            <%= attachment_image_tag @book.user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg" %>
+            <% if @book.user.profile_image.present? %>
+              <%= attachment_image_tag book.user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg" %>
+            <% else %>
+              <%= image_tag "no_image.jpg", size: "40x40" %>
+            <% end %>
           <% end %>
         </div>
       </div>
       <div class="book-detail-block row">
         <div class="book-detail-left-content col-3">
           <div id="container" style="height: 252px;">
-            <div id="theTarget">
               <% if @book.book_images.present? %>
-                <% @book.book_images.each do |book_image| %>
-                  <%= attachment_image_tag book_image, :book_image, :fill, 190, 252.15, fallback: "no-image-book.png" %>
-                <% end %>
+                <div id="theTarget">
+                  <% @book.book_images.each do |book_image| %>
+                    <%= attachment_image_tag book_image, :book_image, :fill, 190, 252.15, fallback: "no-image-book.png" %>
+                  <% end %>
+                </div>
               <% else %>
                 <%= image_tag "no-image-book.png", size: "190x252.15" %>
               <% end %>
-            </div>
           </div>
         </div>
         <div class="book-detail-right-content col-9">
