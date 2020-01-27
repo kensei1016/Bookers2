@@ -42,7 +42,9 @@
       <label for="file">ファイル（複数選択可）</label>
       <div id="file" class="input-group">
         <div class="custom-file">
-          <input type="file" id="cutomfile" class="custom-file-input" name="cutomfile[]" multiple />
+          <!--<input type="file" id="cutomfile" class="custom-file-input" name="cutomfile[]" multiple />-->
+          <!--<%= f.file_field :book_image, id: "cutomfile", class: "custom-file-input", :multiple => true %>-->
+          <%= f.attachment_field :book_images_book_images, class: "custom-file-input", :multiple => true %>
           <label class="custom-file-label" for="customfile" data-browse="参照">ファイル選択...</label>
         </div>
         <div class="input-group-append">

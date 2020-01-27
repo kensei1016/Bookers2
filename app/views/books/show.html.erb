@@ -17,7 +17,17 @@
       </div>
       <div class="book-detail-block row">
         <div class="book-detail-left-content col-3">
-          <%= attachment_image_tag @book, :book_image, :fill, 190, 252.15, fallback: "no-image-book.png" %>
+          <div id="container" style="height: 252px;">
+            <div id="theTarget">
+              <% if @book.book_images.present? %>
+                <% @book.book_images.each do |book_image| %>
+                  <%= attachment_image_tag book_image, :book_image, :fill, 190, 252.15, fallback: "no-image-book.png" %>
+                <% end %>
+              <% else %>
+                <%= image_tag "no-image-book.png", size: "190x252.15" %>
+              <% end %>
+            </div>
+          </div>
         </div>
         <div class="book-detail-right-content col-9">
           <h3 class="book-title"><%= @book.title %></h3>

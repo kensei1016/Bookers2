@@ -1,4 +1,5 @@
-$(document).on('turbolinks:load', function () {
+$(document).on('turbolinks:load', function() {
+  // New bookのfileinput関連
   $('.custom-file-input').on('change', handleFileSelect);
 
   function handleFileSelect(evt) {
@@ -8,9 +9,7 @@ $(document).on('turbolinks:load', function () {
     var files = evt.target.files;
 
     for (var i = 0, f; f = files[i]; i++) {
-
       var reader = new FileReader();
-
       reader.onload = (function (theFile) {
         return function (e) {
           if (theFile.type.match('image.*')) {
@@ -18,11 +17,9 @@ $(document).on('turbolinks:load', function () {
           } else {
             var $html = ['<div class="d-inline-block mr-1"><span class="small">', escape(theFile.name), '</span></div>'].join('');//画像以外はファイル名のみの表示
           }
-
           $('#preview').append($html);
         };
       })(f);
-
       reader.readAsDataURL(f);
     }
     $(this).next('.custom-file-label').html(+ files.length + '個のファイルを選択しました');
@@ -34,4 +31,31 @@ $(document).on('turbolinks:load', function () {
     $('#preview').remove();
     $('.custom-file-input').val('');
   })
+  // New bookのfileinput関連/
+
+  //bookimageのギャラリー表示
+  // オプションを指定してSkipprの実行
+  $("#theTarget").skippr({
+    // スライドショーの変化 ("fade" or "slide")
+    transition : 'slide',
+    // 変化に係る時間(ミリ秒)
+    speed : 1000,
+    // easingの種類
+    easing : 'easeOutQuart',
+    // ナビゲーションの形("block" or "bubble")
+    navType : 'bubble',
+    // 子要素の種類("div" or "img")
+    childrenElementType : 'img',
+    // ナビゲーション矢印の表示(trueで表示)
+    arrows : true,
+    // スライドショーの自動再生(falseで自動再生なし)
+    autoPlay : false,
+    // 自動再生時のスライド切替間隔(ミリ秒)
+    autoPlayDuration : 1000,
+    // キーボードの矢印キーによるスライド送りの設定(trueで有効)
+    keyboardOnAlways : true,
+    // 一枚目のスライド表示時に戻る矢印を表示するかどうか(falseで非表示)
+    hidePrevious : false
+  });
+  //bookimageのギャラリー表示/
 });

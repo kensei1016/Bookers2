@@ -2,8 +2,10 @@ class Book < ApplicationRecord
   belongs_to :user
   has_many :post_comments, dependent: :destroy
   has_many :emotions, dependent: :destroy
+  has_many :book_images, dependent: :destroy
 
-  attachment :book_image
+  accepts_attachments_for :book_images, attachment: :book_image
+  # attachment :book_image
 
   validates :title,
    presence: true
