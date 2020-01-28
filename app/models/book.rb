@@ -5,7 +5,6 @@ class Book < ApplicationRecord
   has_many :book_images, dependent: :destroy
 
   accepts_attachments_for :book_images, attachment: :book_image
-  # attachment :book_image
 
   validates :title,
    presence: true

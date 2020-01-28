@@ -3,7 +3,6 @@ class BooksController < ApplicationController
   end
 
   def create
-    binding.pry
     @user = User.find(current_user.id)
     @books = Book.all
     @book = Book.new(book_params)
@@ -11,6 +10,9 @@ class BooksController < ApplicationController
     if @book.save
       redirect_to book_path(@book), notice: 'You have creatad book successfully.'
     else
+      @q = Book.all.ransack(params[:q])
+      @q.sorts = 'created_at desc' if @q.sorts.empty?
+      @books = @q.result
       render :index
     end
   end
