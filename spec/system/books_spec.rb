@@ -150,6 +150,14 @@ describe '投稿のテスト' do
   			visit book_path(book2)
   			expect(page).to have_no_link 'Destroy', href: book_path(book2)
   		end
-  	end
+		end
+		context 'コメント投稿機能を確認' do
+			it 'コメント投稿に成功する' do
+				visit book_path(book)
+				fill_in 'post_comment[comment]', with: Faker::Lorem.characters(number:20)
+		  	click_button 'Post Your Comment'
+		  	expect(page).to have_content 'successfully'
+			end
+		end
   end
 end

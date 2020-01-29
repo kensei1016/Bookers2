@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Bookers2</title>
+    <title>Bookers - あなたイチオシの本を共有しませんか？</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -14,9 +14,13 @@
     <%# header %>
     <header class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
       <% if user_signed_in? %>
-        <%= link_to 'Bookers', user_path(current_user.id), class: "navbar-brand" %>
+        <%= link_to user_path(current_user.id) do %>
+          <%= image_tag 'title.svg',height: "40px", class: "navbar-brand" %>
+        <% end %>
       <% else %>
-        <%= link_to 'Bookers', root_path, class: "navbar-brand" %>
+        <%= link_to root_path do %>
+          <%= image_tag 'title.svg',height: "40px", class: "navbar-brand" %>
+        <% end %>
       <% end %>
 
       <nav class="collapse navbar-collapse">
