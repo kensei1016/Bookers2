@@ -84,10 +84,56 @@
     <%= yield %>
 
     <%# footer %>
-    <footer>
-      <div class="row justify-content-end w-100">
-        <div class="col-sm-2">
-          <p>CopyRight Infratop. inc</p>
+    <footer class="bg-dark text-light p-3">
+      <div class="container">
+        <div class="footer-content row align-items-center">
+          <div class="footer-content-left col-4">
+            <h2 class="footer-logo"><%= image_tag 'title.svg', height: "40px" %></h2>
+            <div class="company-address">〒300-3000 東京都中央区杉並1−1</div>
+            <div class="conpany-email">http://honniumoreru.co.jp</div>
+            <div class="footer-social mt-2">
+              <ul>
+                <li><%= link_to icon('fab', 'twitter'), '#' %></li>
+                <li><%= link_to icon('fab', 'facebook'), '#' %></li>
+                <li><%= link_to icon('fab', 'instagram'), '#' %></li>
+              </ul>
+            </div>
+          </div>
+          <div class="footer-content-right col-8">
+            <div class="row">
+              <div class="site-info site-info-about col">
+                <h3 class="site-info-title title-about">ABOUT</h3>
+                <ul>
+                  <li>設立</li>
+                  <li>所在地</li>
+                  <li>地図</li>
+                  <li>スタッフ</li>
+                </ul>
+              </div>
+              <div class="site-info site-info-support col">
+                <h3 class="site-info-title title-support">SUPPORT</h3>
+                <ul>
+                  <li>ダウンロード</li>
+                  <li>マニュアル</li>
+                  <li>よくある質問</li>
+                  <li>お問い合わせ</li>
+                </ul>
+              </div>
+              <div class="site-info site-info-contents col">
+                <h3 class="site-info-title title-contents">CONTENTS</h3>
+                <ul>
+                  <li>お知らせ</li>
+                  <li>ビジネス</li>
+                  <li>プロフィール</li>
+                  <li>開発者</li>
+                  <li>ブログ</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="copyright-block row justify-content-center text-center">
+          <span class="col-5">Copy Right Infratop.inc</span>
         </div>
       </div>
     </footer>
